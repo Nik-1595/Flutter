@@ -4,17 +4,29 @@ void main(){
     runApp(MyApp());
 }
 
-void nikhil(){
 
+
+class MyApp extends StatefulWidget {
+
+    @override
+    State<StatefulWidget> createState(){
+      return MyAppState();
+    }
 }
 
+class MyAppState extends State<MyApp>{
 
-class MyApp extends StatelessWidget {
 
   var questionIndex = 0;
 
   void answer(){
-    questionIndex = questionIndex +1 ;
+    setState(() {
+
+        questionIndex = questionIndex +1 ;
+
+
+    });
+
   }
 
     @override
