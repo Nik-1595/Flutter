@@ -24,16 +24,30 @@ class MyApp extends StatelessWidget{
 
       ),
 
-      body: Center(
-        child:RaisedButton.icon(
-          onPressed: () {},
-          icon: Icon(
-            Icons.mail
-          ),
-          label: Text('mail me'),
-          color: Colors.amber,
-        ),
-      ),
+      body:
+
+        Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.all(20.0),
+              color: Colors.deepOrange,
+              child: Text('One'),
+            ),
+            Container(
+              padding: EdgeInsets.all(30.0),
+              color: Colors.cyanAccent,
+              child: Text('two'),
+            ),
+            Container(
+              padding: EdgeInsets.all(40.0),
+              color: Colors.green,
+              child: Text('three'),
+            ),
+          ],
+        )
+      ,
 
 
       floatingActionButton: FloatingActionButton(
