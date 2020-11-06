@@ -9,7 +9,13 @@ void main(){
 
 }
 
-class MyApp extends StatelessWidget{
+class MyApp extends StatefulWidget{
+  @override
+  _IdCardState createState() => _IdCardState();
+}
+
+class _IdCardState extends State<MyApp>{
+  int level = 0;
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -20,6 +26,15 @@ class MyApp extends StatelessWidget{
           backgroundColor: Colors.grey[850],
           elevation: 0.0,
         ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            level += 1;
+          });
+
+        },
+        child: Icon(Icons.add),
+      ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0,40.0, 30.0,0.0),
         child: Column(
@@ -62,7 +77,7 @@ class MyApp extends StatelessWidget{
             ),
             SizedBox(height: 10.0),
             Text(
-              'Z+',
+              '$level',
               style: TextStyle(
                 color: Colors.amberAccent,
                 letterSpacing: 1.0,
