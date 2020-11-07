@@ -1,114 +1,72 @@
 import 'package:flutter/material.dart';
+import 'quotes.dart';
 
-void main(){
-    runApp(MaterialApp(
+void main() => runApp(MaterialApp(
+  home:QuoteList(),
+));
 
-      home: MyApp(),
-
-    ));
-
+class QuoteList extends StatefulWidget {
+  @override
+  _QuoteListSatate createState() => _QuoteListSatate();
 }
 
-class MyApp extends StatefulWidget{
-  @override
-  _IdCardState createState() => _IdCardState();
-}
+class _QuoteListSatate extends State<QuoteList> {
 
-class _IdCardState extends State<MyApp>{
-  int level = 0;
-  @override
-  Widget build(BuildContext context){
-    return Scaffold(
-        backgroundColor: Colors.grey[900],
-        appBar: AppBar(
-          title: Text('Ninja ID Card'),
-          centerTitle: true,
-          backgroundColor: Colors.grey[850],
-          elevation: 0.0,
-        ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          setState(() {
-            level += 1;
-          });
+  List<quote> quotes =[
 
-        },
-        child: Icon(Icons.add),
-      ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(30.0,40.0, 30.0,0.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/yu.jpg'),
-                radius: 50.0,
-              ),
-            ),
-            Divider(
-              height: 60.0,
-              color: Colors.amberAccent,
-            ),
-            Text(
-              'NAME',
-              style: TextStyle(
-                color: Colors.grey,
-                letterSpacing: 1.0,
-              ),
-            ),
-            SizedBox(height: 10.0),
-            Text(
-              'Nikhil S',
-              style: TextStyle(
-                color: Colors.amberAccent,
-                letterSpacing: 1.0,
-                fontSize: 25.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 30.0),
-            Text(
-              'Level',
-              style: TextStyle(
-                color: Colors.grey,
-                letterSpacing: 1.0,
-              ),
-            ),
-            SizedBox(height: 10.0),
-            Text(
-              '$level',
-              style: TextStyle(
-                color: Colors.amberAccent,
-                letterSpacing: 1.0,
-                fontSize: 25.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 30.0),
-            Row(
-              children: <Widget>[
-                Icon(
-                  Icons.email,
-                  color: Colors.grey,
-                ),
-                SizedBox(width: 10.0),
-                Text(
-                  'nikhils@gmail.com',
+    quote(author:'NIkhil',text:'naan iruvude ninagaagi dsdsjakjsacjksahckjsahnckjsa'),
+    quote(author:'bazzak',text:'neen iruvadue nanagaagi scnsajcnsajcnksnckjsnckajsncka'),
+
+  ];
+
+  Widget quoteTemplate(quote){
+      return Card(
+        margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Text(
+                  quote.text,
                   style: TextStyle(
-                    color: Colors.blueAccent,
                     fontSize: 18.0,
-                    letterSpacing: 1.0,
                   ),
-                )
-              ],
-            )
-          ],
+              ),
+              SizedBox(height: 6.0),
+              Text(
+                quote.author,
+                style: TextStyle(
+                  fontSize: 18.0,
+                ),
+              ),
+              SizedBox(height: 6.0),
+              FlatButton.icon(
+                  onPressed: (){},
+                  icon: Icon(Icons.delete),
+                  label: Text('delete quote'),
+              )
+            ],
+          ),
         ),
+      );
+  }
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey,
+      appBar: AppBar(
+        title: Text('Awesome'),
+        backgroundColor: Colors.redAccent,
+        centerTitle: true,
       ),
+      body: Column(
+        children: quotes.map((quote) => quoteTemplate(quote)).toList(),
+      )
+
     );
   }
 }
-
-
-
